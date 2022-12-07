@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: risk-engine
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  redis:
+    lettuce:
+      pool:
+        min-idle: 8
+        max-idle: 8
+        max-active: 8
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://root:2345678@localhost:3306/risk-engine?characterEncoding=UTF-8&useSSL=false
+
+
+server:
+  shutdown: graceful
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.ljf.risk.engine.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    jdbc-type-for-null: 'null'
